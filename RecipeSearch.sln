@@ -1,0 +1,42 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34322.80
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecipeSearch", "RecipeSearch\RecipeSearch.csproj", "{471BD3D5-4D12-490C-B141-32C347B402B1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Api", "Api", "{929A9AE5-ACE7-413C-9CFF-AE60448AFE49}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GigaChat", "GigaChat", "{B740864D-1107-47B0-ACD1-86061A6600FB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Edamam", "Edamam", "{9F72D947-09D7-4C44-95C0-B722AAB8B045}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GigaChat", "GigaChat\GigaChat.csproj", "{6C359F51-6DF0-404F-8B11-FF7B2441FAD8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{471BD3D5-4D12-490C-B141-32C347B402B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{471BD3D5-4D12-490C-B141-32C347B402B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{471BD3D5-4D12-490C-B141-32C347B402B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{471BD3D5-4D12-490C-B141-32C347B402B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C359F51-6DF0-404F-8B11-FF7B2441FAD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C359F51-6DF0-404F-8B11-FF7B2441FAD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C359F51-6DF0-404F-8B11-FF7B2441FAD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C359F51-6DF0-404F-8B11-FF7B2441FAD8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B740864D-1107-47B0-ACD1-86061A6600FB} = {929A9AE5-ACE7-413C-9CFF-AE60448AFE49}
+		{9F72D947-09D7-4C44-95C0-B722AAB8B045} = {929A9AE5-ACE7-413C-9CFF-AE60448AFE49}
+		{6C359F51-6DF0-404F-8B11-FF7B2441FAD8} = {B740864D-1107-47B0-ACD1-86061A6600FB}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {49C01E1F-8A49-4915-B264-69D46D4E6C64}
+	EndGlobalSection
+EndGlobal
