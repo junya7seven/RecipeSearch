@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Find Your Recipe</title>
+</head>
+<body>
+    <h2>Food?</h2>
+    <form id="myForm" onsubmit="return false;">
+        <p>What do you want?: <input id="inputString" name="inputString" /></p>
+        <p>Result: <span id="result"></span></p>
+        <p>
+            Country Food:<br />
+            <select multiple name="counties">
+                <option>Russia</option>
+                <option>Spain</option>
+                <option>Italy</option>
+                <option>China</option>
+                <option>France</option>
+            </select>
+        </p>
+        <input type="submit" onclick="sendForm()" value="Send" />
+    </form>
+
+    <script>
+        function sendForm() {
+            var formData = new FormData(document.getElementById("myForm"));
+
+            fetch("/postUser", {
+                method: "POST",
+                body: formData
+            })
+                .then(response => response.text())
+                .then(result => {
+                    document.getElementById("result").textContent = result; // Обновляем содержимое элемента с id "result" на полученный результат
+                })
+                .catch(error => console.error('Ошибка:', error));
+        }
+    </script>
+</body>
+</html>

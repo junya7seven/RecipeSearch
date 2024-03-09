@@ -1,11 +1,22 @@
 using GigaChat.Models;
 using GigaChatRequest;
+using Microsoft.Extensions.FileProviders;
+using RecipeSearch.Controller;
+using System;
+
+
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddControllers();
+
 var app = builder.Build();
-GigaChatAnswer gigaChat = new GigaChatAnswer("ClientSecret", "Auth", Scope.GIGACHAT_API_PERS);
-await gigaChat.SendMessage("hi","who are you?");
 
+app.UseDefaultFiles(new DefaultFilesOptions
+{
+    DefaultFileNames = new
+     List<string> { "index.html" }
+});
+app.UseStaticFiles();
+app.MapControllers();
 
-app.MapGet("/", () => $"Hello World!");
 
 app.Run();
