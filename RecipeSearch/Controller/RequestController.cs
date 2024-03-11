@@ -1,12 +1,6 @@
-﻿using GigaChat;
-using EdamamRequest;
-using GigaChat.Models;
-using GigaChatRequest;
-using RecipeSearch;
-using Edamam.Models;
-using Microsoft.AspNetCore.Mvc;
-using System;
+﻿using Microsoft.AspNetCore.Mvc;
 using RecipeSearch.Models;
+using RecipeSearch.Service;
 
 namespace RecipeSearch.Controller
 {
@@ -14,16 +8,22 @@ namespace RecipeSearch.Controller
     [Route("[controller]")]
     public class RequestController : ControllerBase
     {
-        [HttpPost("/postUser")]
-        public async Task<IActionResult> PostUser([FromForm]string inputString)
+        private readonly IConfiguration _configuration;
+
+        private readonly AnswerService _answerService;
+        public RequestController(AnswerService answerService, IConfiguration configuration)
         {
-            Response.ContentType = "text/html; charset=utf-8";
-            GigaChatAnswer giga = new GigaChatAnswer(Scope.GIGACHAT_API_PERS);
+            _answerService = answerService;
+            _configuration = configuration;
+        }
+
+        [HttpPost("/postUser")]
+        public async Task<IActionResult> PostUser([FromForm]string inputString, [FromForm] string country, [FromForm] bool checkboxValue)
+        {
+            AppSettings appSettings = _configuration.GetSection("Settings").Get<AppSettings>();
             
-            string answer = await giga.SendMessage(inputString, "q");
-            return Content(answer, "text/html; charset=utf-8");
-
-
+            var answerRecipe = await _answerService.ResponseServiceEdamam(inputString, country,appSettings.Promt, checkboxValue);
+            return Ok(answerRecipe.Recipe);
         }
     }
 }

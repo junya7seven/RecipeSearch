@@ -22,7 +22,7 @@ namespace EdamamRequest
 
         public async Task<RootObjectCook?> GetRecipe(string food)
         {
-            string url = $"{dataParams.Url}?type={dataParams.type}&q={food}&app_id={dataParams.appId}&app_key={dataParams.appKey}&ingr={dataParams.ingr}&diet={dataParams.diet}&cuisineType={Country}&mealType={dataParams.mealType}&calories={Calories}&field={dataParams.field}";
+            string url = $"{dataParams.Url}?type={dataParams.type}&q={food}&app_id={dataParams.appId}&app_key={dataParams.appKey}&cuisineType={Country}&calories=100-500&field={dataParams.field}";
             try
             {
                 using (HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, url))
@@ -38,8 +38,7 @@ namespace EdamamRequest
                     }
                     else
                     {
-                        Console.WriteLine("No recipes found.");
-                        return null;
+                        throw new Exception("No recipes found.");
                     }
                 }
             }

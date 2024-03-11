@@ -12,11 +12,6 @@ namespace Edamam.Models
         public string type { get; set; } = "public";
         public string appId { get; set; } = "901c81ef";
         public string appKey { get; set; } = "fa9555cf8a18d1e6acf9c7a0bbb4f4e2";
-        public string ingr { get; set; } = "5-8";
-        public string diet { get; set; } = "low-carb";
-        public string cuisineType { get; set; } = "French";
-        public string mealType { get; set; } = "Snack";
-        public string calories { get; set; } = "100-500";
         public string field { get; set; } = "ingredientLines";
     }
 }

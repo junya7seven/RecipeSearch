@@ -13,7 +13,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Edamam", "Edamam", "{9F72D9
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GigaChat", "GigaChat\GigaChat.csproj", "{6C359F51-6DF0-404F-8B11-FF7B2441FAD8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Edamam", "Edamam\Edamam.csproj", "{46D6A21D-17AD-4EFD-805E-497466ED3FAE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Edamam", "Edamam\Edamam.csproj", "{46D6A21D-17AD-4EFD-805E-497466ED3FAE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

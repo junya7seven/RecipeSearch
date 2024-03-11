@@ -1,13 +1,13 @@
-using GigaChat.Models;
-using GigaChatRequest;
-using Microsoft.Extensions.FileProviders;
-using RecipeSearch.Controller;
-using System;
 
+using RecipeSearch.Service;
+using RecipeSearch.Service.Interface;
+using RecipeSearch.Service.Logic;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
-
+builder.Services.AddScoped<IGigaChatService,GigaChatService>();
+builder.Services.AddScoped<IEdamamService, EdamamService>(); 
+builder.Services.AddScoped<AnswerService>();
 var app = builder.Build();
 
 app.UseDefaultFiles(new DefaultFilesOptions

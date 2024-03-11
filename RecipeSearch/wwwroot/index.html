@@ -6,23 +6,42 @@
 </head>
 <body>
     <h2>Food?</h2>
-    <form id="myForm" onsubmit="return false;">
-        <p>What do you want?: <input id="inputString" name="inputString" /></p>
-        <p>Result: <span id="result"></span></p>
-        <p>
-            Country Food:<br />
-            <select multiple name="counties">
-                <option>Russia</option>
-                <option>Spain</option>
-                <option>Italy</option>
-                <option>China</option>
-                <option>France</option>
+    <form id="myForm" onsubmit="sendForm(); return false;">
+        <p>Что вы хотите?: <input id="inputString" name="inputString" /></p>
+        <p>Result:</p>
+        <ul id="result"></ul>
+        <p id="countryBlock">
+            Страна блюда:<br />
+            <select name="country" id="country">
+                <option value="Japanese">Japanese</option>
+                <option value="Chinese">Chinese</option>
+                <option value="Mexican">Mexican</option>
+                <option value="Italian">Italian</option>
+                <option value="French">French</option>
+                <option value="World">World</option>
             </select>
         </p>
-        <input type="submit" onclick="sendForm()" value="Send" />
+        <p>
+            Узнать рецепт по описанию:
+            <input type="checkbox" id="checkboxValue" name="checkboxValue" value="true" onchange="toggleBlocks()">
+            <label for="checkboxValue">True</label>
+        </p>
+        <input type="submit" value="Send" />
     </form>
 
     <script>
+        function toggleBlocks() {
+            var countryBlock = document.getElementById("countryBlock");
+            var checkbox = document.getElementById("checkboxValue");
+
+            // Если флажок установлен, скрываем блоки страны и описания
+            if (!checkbox.checked) {
+                countryBlock.style.display = "none";
+            } else {
+                countryBlock.style.display = "block";
+            }
+        }
+
         function sendForm() {
             var formData = new FormData(document.getElementById("myForm"));
 
@@ -30,9 +49,22 @@
                 method: "POST",
                 body: formData
             })
-                .then(response => response.text())
+                .then(response => response.json())
                 .then(result => {
-                    document.getElementById("result").textContent = result; // Обновляем содержимое элемента с id "result" на полученный результат
+                    var resultElement = document.getElementById("result");
+                    resultElement.innerHTML = "";
+
+                    if (result && result.length > 0) {
+                        result.forEach(recipe => {
+                            var li = document.createElement("li");
+                            li.textContent = recipe;
+                            resultElement.appendChild(li);
+                        });
+                    } else {
+                        var li = document.createElement("li");
+                        li.textContent = "No recipes found.";
+                        resultElement.appendChild(li);
+                    }
                 })
                 .catch(error => console.error('Ошибка:', error));
         }
