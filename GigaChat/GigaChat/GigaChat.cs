@@ -6,6 +6,7 @@ using System;
 using System.Net;
 using System.Net.Http.Headers;
 using System.Text;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace GigaChatRequest
 {
@@ -57,12 +58,8 @@ namespace GigaChatRequest
             }
         }
 
-
-        // Get models
-
-
         // Send question
-        public async Task<string> SendMessage(string GigaRequest, string promt)
+        public async Task<RootObjectGigaChat> SendMessage(string GigaRequest, string promt)
         {
             await Authorize();
             ParametersModel dataParams = new ParametersModel();
@@ -88,22 +85,16 @@ namespace GigaChatRequest
                         {
                             throw new Exception($"Error 500 Internal Server Error");
                         }
-                        else
-                        {
-                            foreach (var item in data.Choices)
-                            {
-                                answer += item.Message.Content;
-                            }
-                        }
+
                         request.Dispose();
-                        return answer;
+                        return data;
                     }
                 }
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Error 401: no authorization {ex.Message}");
-                return answer;
+                return null;
             }
         }
     }

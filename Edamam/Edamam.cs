@@ -9,12 +9,6 @@ namespace EdamamRequest
         private ParametersModelEdamam dataParams {  get; set; } = new ParametersModelEdamam();
         private HttpClient client { get; set; } = new();
         private string Country {  get; set; }
-        private string Calories { get; set; }
-        public EdamamAnswer(string country,string calories)
-        {
-            Country = country;
-            Calories = calories;
-        }
         public EdamamAnswer(string country)
         {
             Country = country;
@@ -22,13 +16,22 @@ namespace EdamamRequest
 
         public async Task<RootObjectCook?> GetRecipe(string food)
         {
-            string url = $"{dataParams.Url}?type={dataParams.type}&q={food}&app_id={dataParams.appId}&app_key={dataParams.appKey}&cuisineType={Country}&calories=100-500&field={dataParams.field}";
+            string url = "";
+            if(Country.Equals("World"))
+            {
+                url = $"{dataParams.Url}?type={dataParams.type}&q={food}&app_id={dataParams.appId}&app_key={dataParams.appKey}&field={dataParams.field}";
+
+            }
+            else
+            {
+                url = $"{dataParams.Url}?type={dataParams.type}&q={food}&app_id={dataParams.appId}&app_key={dataParams.appKey}&cuisineType={Country}&field={dataParams.field}";
+            }
             try
             {
                 using (HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, url))
                 {
                     request.Headers.Add("accept", "application/json");
-                    request.Headers.Add("Accept-Language", "en"); // Русский не поддерживается
+                    request.Headers.Add("Accept-Language", "en");
 
                     var response = await client.SendAsync(request);
                     var rootObject = JsonConvert.DeserializeObject<RootObjectCook>(await response.Content.ReadAsStringAsync());

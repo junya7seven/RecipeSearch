@@ -6,7 +6,7 @@ namespace RecipeSearch.Service.Interface
 {
     public interface IGigaChatService
     {
-        Task<string> GetAnswer(string inputString, string promt);
+        Task<RootObjectGigaChat> GetAnswer(string inputString, string promt);
     }
     public interface IEdamamService: IEdamamServiceGetModel
     {

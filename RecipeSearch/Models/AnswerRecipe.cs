@@ -1,7 +1,10 @@
-﻿namespace RecipeSearch.Models
+﻿using Edamam.Models;
+
+namespace RecipeSearch.Models
 {
     public class AnswerRecipe
     {
-        public List<string> Recipe { get; set; } = new();
+        public List<string> AnswerAPI { get; set; } = new();
     }
+
 }

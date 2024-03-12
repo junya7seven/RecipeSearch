@@ -22,8 +22,8 @@ namespace RecipeSearch.Controller
         {
             AppSettings appSettings = _configuration.GetSection("Settings").Get<AppSettings>();
             
-            var answerRecipe = await _answerService.ResponseServiceEdamam(inputString, country,appSettings.Promt, checkboxValue);
-            return Ok(answerRecipe.Recipe);
+            var answerRecipe = await _answerService.ResponseService(inputString, country,appSettings.Promt, checkboxValue);
+            return Ok(answerRecipe.AnswerAPI);
         }
     }
 }

@@ -22,7 +22,7 @@ namespace RecipeSearch.Service.Logic
                 {
                     foreach (var item2 in item.Recipe.IngredientLines)
                     {
-                        answerRecipe.Recipe.Add(item2);
+                        answerRecipe.AnswerAPI.Add(item2);
                     }
                     break;
                 }
