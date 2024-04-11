@@ -6,7 +6,6 @@ using System;
 using System.Net;
 using System.Net.Http.Headers;
 using System.Text;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace GigaChatRequest
 {
@@ -14,7 +13,6 @@ namespace GigaChatRequest
     {
         private Scope Scope { get; set; }
         private AccessTokenModel? AccessTokenModels { get; set; }
-        private ModelList? modelList { get; set; }
         private HttpClient client { get; set; } = new();
         private ApiCodes apiCodes { get; set; } = new();
         
@@ -48,7 +46,6 @@ namespace GigaChatRequest
                     {
                         Console.WriteLine("Ok 200");
                     }
-                    //client.Dispose();
                     message.Dispose();
                 }
             }

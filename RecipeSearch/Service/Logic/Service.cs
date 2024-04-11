@@ -9,7 +9,6 @@ namespace RecipeSearch.Service
         private readonly IGigaChatService _chatService;
         private readonly IEdamamService _edamamService;
         private AnswerRecipe AnswerRecipe { get; set; } = new();
-        //private AnswerGigaChat AnswerGigaChat { get; set; } = new();
         public AnswerService(IGigaChatService chatService, IEdamamService emaService)
         {
             _chatService = chatService;
